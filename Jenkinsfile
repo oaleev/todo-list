@@ -7,6 +7,11 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/oaleev/todo-list.git']])
             }
         }
+        stage('install') {
+            steps{
+                sh 'npm install'
+            }
+        }
         stage('Test') {
             steps {
                 // Run unit tests with Jest (assuming you have a jest.config.js file)
