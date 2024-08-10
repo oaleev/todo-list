@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Install Node.js and npm
-                tool nodejs: '20.17.0'
+                tool nodejs: '12.22.9'
 
                 // Change directory to the project root
                 dir('path/to/your/project') {
