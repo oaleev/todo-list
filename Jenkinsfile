@@ -2,19 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                // Install Node.js and npm
-                tool nodejs: '12.22.9'
-
-                // Change directory to the project root
-                dir('path/to/your/project') {
-                    // Run npm install
-                    sh 'npm install'
-                }
+        stage('Checkout') {
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/oaleev/todo-list.git']])
             }
         }
-
         stage('Test') {
             steps {
                 // Run unit tests with Jest (assuming you have a jest.config.js file)
